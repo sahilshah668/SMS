@@ -54,7 +54,21 @@ export const onRegister = (data,history) => {
 }
 
 
-export const onLogin = (data) => {
-
+export const onLogin = (data,history) => {
+    return dispatch => {
+      axios.post('http://localhost:5000/login',data).then(res => {
+        if(res.status === 200) {
+          const {token} = res.data
+          setAuthToken(token)
+          localStorage.setItem('jwtToken',token)
+          const decoded = jwt_decode(token)
+          dispatch(onLoginSuccess(decoded))
+          history.push('/dashboard')
+        }else {
+          // console.log(res.data)
+          dispatch(onLoginFailure(res.data))
+        }
+      })
+    }
 }
 
