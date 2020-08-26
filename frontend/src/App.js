@@ -11,6 +11,7 @@ import DashBoard from "./Components/scripts/Auth/DashBoard/DashBoard";
 import setAuthToken from "./Components/utils/setAuthToken";
 import JwtDecode from "jwt-decode";
 import { onLoginSuccess } from "./Components/Redux/Authentication/AuthAction";
+import Example from "./Components/scripts/hooks/Example";
 // import setAuthToken from "./Components/utils/setAuthToken";
 // import jwt_decode from "jwt-decode";
 // import { onLoginSuccess } from "./Components/Redux/Authentication/AuthAction";
@@ -24,6 +25,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+        <Route exact path="/example" component={Example} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/" component={Login} />
         <PrivateRoute exact path="/dashboard" component={DashBoard} />
