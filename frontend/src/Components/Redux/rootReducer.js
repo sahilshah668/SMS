@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux'
 import authReducer from './Authentication/AuthReducer'
+import ResourceReducer from './Resources/ResourceReducer'
 
 
 export default combineReducers({
-    auth:authReducer
+    auth:authReducer,
+    resource:ResourceReducer
 })
