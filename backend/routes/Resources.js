@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const fileUpload = require('../config/multer')
 const Resource = require("../models/Resources");
 
 //Get Request
@@ -18,24 +18,26 @@ router.get("/admin/resource", async (req, res) => {
 
 //Post Request
 
-router.post("/admin/resources", (req, res) => {
+router.post("/admin/resources",fileUpload.single('resource') ,(req, res) => {
+  console.log(req.file)
   const newResource = Resource({
     class: req.body.class,
     board: req.body.board,
     subject: req.body.subject,
     title: req.body.title,
     description: req.body.description,
+    // file:req.file.location
   });
 
-  newResource
-    .save()
-    .then((resource) => {
-      res.status(200).json({ msg: "successfully addedd" });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: "something went wrong" });
-    });
+  // newResource
+  //   .save()
+  //   .then((resource) => {
+  //     res.status(200).json({ msg: "successfully addedd" });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     res.status(500).json({ msg: "something went wrong" });
+  //   });
 });
 
 router.put("/admin/resource/:id", (req, res) => {

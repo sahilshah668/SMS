@@ -13,6 +13,7 @@ import JwtDecode from "jwt-decode";
 import { onLoginSuccess } from "./Components/Redux/Authentication/AuthAction";
 import Example from "./Components/scripts/hooks/Example";
 import Resource from "./Components/scripts/Resource/Resource";
+import AddResources from "./Components/scripts/Resource/AddResources";
 // import setAuthToken from "./Components/utils/setAuthToken";
 // import jwt_decode from "jwt-decode";
 // import { onLoginSuccess } from "./Components/Redux/Authentication/AuthAction";
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/example" component={Example} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/" component={Login} />
+        <Route exact path="/addresource" component={AddResources} />
         <PrivateRoute exact path="/dashboard" component={DashBoard} />
         <PrivateRoute exact path="/resource" component={Resource} />
       </Router>
