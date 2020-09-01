@@ -7,7 +7,7 @@ const ResourceSchema = Schema({
     //todo add required
   },
   class: {
-    type: String,
+    type: Number,
     required: true,
   },
   board: {

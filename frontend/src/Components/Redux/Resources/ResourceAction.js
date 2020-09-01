@@ -59,23 +59,32 @@ export const onFetchingResource = () => {
   };
 };
 
-export const onAddingResource = (file) => {
+export const onAddingResource = (file, resourceData) => {
+  console.log(resourceData);
   const data = new FormData();
   data.append("resource", file);
-  return (dispatch) => {
-    dispatch(onFetching());
-    axios
-      .post("http://localhost:5000/admin/resources", data)
-      .then((res) => {
-        if (res.status === 200) {
-          //  dispatch()
-          console.log(res.data);
-        } else {
-          console.log(res.data);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  console.log(data);
+
+  Object.keys(resourceData).forEach((key) => {
+    data.append(key, resourceData[key]);
+  });
+
+  console.log(data);
+
+  // return (dispatch) => {
+  //   dispatch(onFetching());
+  //   axios
+  //     .post("http://localhost:5000/admin/resources", data)
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         //  dispatch()
+  //         console.log(res.data);
+  //       } else {
+  //         console.log(res.data);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 };
