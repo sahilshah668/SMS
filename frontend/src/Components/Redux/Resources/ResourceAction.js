@@ -60,16 +60,26 @@ export const onFetchingResource = () => {
 };
 
 export const onAddingResource = (file, resourceData) => {
-  console.log(resourceData);
-  const data = new FormData();
+  
+
+  let data = new FormData();
   data.append("resource", file);
-  console.log(data);
 
   Object.keys(resourceData).forEach((key) => {
     data.append(key, resourceData[key]);
   });
 
-  console.log(data);
+  return (dispatch) => {
+    axios
+      .post(`http://localhost:5000/admin/resources`, data)
+      .then((res) => {
+        window.location.reload(true);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // return (dispatch) => {
   //   dispatch(onFetching());
