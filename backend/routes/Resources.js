@@ -61,16 +61,6 @@ router.put("/admin/resource/:id", (req, res) => {
     });
 });
 
-//get single Resource
 
-router.get("/admin/resource/:id", (req, res) => {
-  Resource.findOne({ _id: req.params.id })
-    .then((resource) => {
-      res.status(200).json(resource);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
 
 module.exports = router;

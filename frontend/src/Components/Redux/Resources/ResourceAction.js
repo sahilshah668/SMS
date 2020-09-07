@@ -81,20 +81,16 @@ export const onAddingResource = (file, resourceData) => {
       });
   };
 
-  // return (dispatch) => {
-  //   dispatch(onFetching());
-  //   axios
-  //     .post("http://localhost:5000/admin/resources", data)
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         //  dispatch()
-  //         console.log(res.data);
-  //       } else {
-  //         console.log(res.data);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 };
+
+
+export const EditResource = (resource) => {
+  return dispatch => {
+    axios.put(`http://localhost:5000/admin/resource/${resource._id}`,resource)
+     .then(res => {
+       console.log(res)
+     }).catch(err => {
+       console.log(err)
+     })
+  }
+}

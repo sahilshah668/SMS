@@ -26,6 +26,12 @@ export default function (state = initialState, action) {
         dataState: DATA_STATE.FETCH_FAILED,
         error: action.payload,
       };
+    case RESOURCE_ACTION_TYPES.RESOURCE_UPDATE_SUCCESS:
+      return {
+        ...state,
+        dataState:DATA_STATE.SEND_SUCCESS,
+        resources:[...state.resources, action.payload]
+      }
     default:
       return state;
   }
