@@ -1,22 +1,12 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
- class DashBoard extends Component {
-    
+import MiniDrawer from '../../../reuseable/Drawer'
+
+export default class DashBoard extends Component {
     render() {
-        const {user} = this.props.auth
         return (
-            <div>
-                {user.email}
-            </div>
+            <MiniDrawer>
+            <h1>DashBoard</h1>
+            </MiniDrawer>
         )
     }
 }
-
-
-function mapStateToProps (state)  {
-    return {
-        auth:state.auth
-    }
-}
-
-export default connect(mapStateToProps,{})(DashBoard)
