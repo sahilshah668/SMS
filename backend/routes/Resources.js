@@ -21,7 +21,7 @@ router.get("/admin/resource", async (req, res) => {
 router.post("/admin/resources", fileUpload.single("resource"), (req, res) => {
   console.log(req.file);
   const newResource = Resource({
-    // adminId:req.user.id,
+    adminId:req.user.id,
     class: req.body.class,
     board: req.body.board,
     subject: req.body.subject,
@@ -61,6 +61,15 @@ router.put("/admin/resource/:id", (req, res) => {
     });
 });
 
+
+router.post('/admin/resource/delete/:id', (req,res) => {
+  Resource.findByIdAndDelete({_id:req.params.id}).then(response => {
+    res.status(200)
+
+  }).catch(err => {
+    console.log(err)
+  })
+})
 
 
 module.exports = router;

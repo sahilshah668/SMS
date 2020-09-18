@@ -85,8 +85,9 @@ export const onAddingResource = (file, resourceData) => {
 
 
 export const EditResource = (resource) => {
+  console.log(resource)
   return dispatch => {
-    axios.put(`http://localhost:5000/admin/resource/${resource._id}`,resource)
+    axios.put(`http://localhost:5000/admin/resource/${resource.id}`,resource)
      .then(res => {
        console.log(res)
      }).catch(err => {
@@ -94,3 +95,17 @@ export const EditResource = (resource) => {
      })
   }
 }
+
+export const deleteResource = (resource) => {
+  console.log(resource)
+  return dispatch => {
+    axios.post(`http://localhost:5000/admin/resource/delete/${resource._id}`)
+     .then(res => {
+       console.log(res)
+     }).catch(err => {
+       console.log(err)
+     })
+  }
+}
+
+
